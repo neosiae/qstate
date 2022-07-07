@@ -50,3 +50,7 @@ Track and save form state automatically
 **HTMLElement**
 
 Reference to the HTML Form
+
+> **Return value**
+
+Function that cleans up event handlers.
