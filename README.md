@@ -11,7 +11,7 @@ That should not be the case anymore!
 With the help of this library, you can save state that you consider important in query string and improve the UX of your app.
 
 Let's say you have a modal with some kind of form, you can track that form automatically and save all states
-in query string. If a user refreshes the app, you can restore the previous state from query string so your user
+in query string. If the user refreshes the app, you can restore the previous state from query string so your user
 doesn't need to fill it again.
 
 ## Usage
