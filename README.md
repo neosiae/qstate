@@ -53,4 +53,4 @@ Reference to the HTML Form
 
 > **Return value**
 
-Function that cleans up event handlers.
+Function that cleans up event handlers
