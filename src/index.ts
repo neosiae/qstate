@@ -10,14 +10,19 @@ export const save = (qp: QueryParametar): void => {
   window.history.pushState(null, '', url);
 };
 
-export const trackForm = (ref: HTMLElement): void => {
+export const trackForm = (ref: HTMLElement): (() => void) => {
   const form = ref as HTMLFormElement;
 
-  Array.from(form.elements).forEach((element) => {
-    element.addEventListener('blur', (event) => {
-      const { name: key, value } = event.target as HTMLFormElement;
+  const handler = (event: Event): void => {
+    const { name: key, value } = event.target as HTMLFormElement;
 
-      save({ key, value });
-    });
-  });
+    save({ key, value });
+  };
+
+  const elements = Array.from(form.elements);
+
+  elements.forEach((element) => element.addEventListener('blur', handler));
+
+  return () =>
+    elements.forEach((element) => element.removeEventListener('blur', handler));
 };
