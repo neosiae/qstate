@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="manual" type="text" name="manual" />
+
+    <form>
+      <input type="text" name="qstate" />
+      <input type="text" name="awesome" />
+    </form>
+    <script type="module">
+      import { save, trackForm } from '../dist/index.js';
+
+      document.querySelector('#manual').addEventListener('blur', (event) => {
+        const { name: key, value } = event.target;
+
+        save({ key, value });
+      });
+
+      trackForm(document.querySelector('form'));
+    </script>
+  </body>
+</html>
+m
