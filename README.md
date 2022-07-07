@@ -47,6 +47,6 @@ Track and save form state automatically
 
 > **Parameters**
 
-**HTMLELement**
+**HTMLElement**
 
 Reference to the HTML Form
