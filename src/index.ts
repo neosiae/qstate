@@ -5,7 +5,7 @@ export const save = (qp: QueryParametar): void => {
 
   params.set(qp.key, qp.value);
 
-  const url = window.location.pathname + '?' + params.toString();
+  const url = `${window.location.pathname}?${params.toString()}`;
 
   window.history.pushState(null, '', url);
 };
