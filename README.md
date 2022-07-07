@@ -11,7 +11,8 @@ That should not be the case anymore!
 With the help of this library you can save state that you consider important in query string and improve UX of your app.
 
 Let's say you have a modal with some kind of form, you can track that form automatically and save all state
-in query string. If user refreshes the app, you can restore the previous state from query string.
+in query string. If user refreshes the app, you can restore the previous state from query string so your user
+doesn't need to fill it again.
 
 ## Usage
 
@@ -29,7 +30,7 @@ trackForm(document.querySelector('form'));
 
 ### save
 
-Save data manually
+Save state manually
 
 > **Parameters**
 
