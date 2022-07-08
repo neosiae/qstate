@@ -7,7 +7,7 @@ export const save = (qp: QueryParametar): void => {
 
   const url = `${window.location.pathname}?${params.toString()}`;
 
-  window.history.pushState(null, '', url);
+  window.history.replaceState(null, '', url);
 };
 
 export const trackForm = (ref: HTMLElement): (() => void) => {
