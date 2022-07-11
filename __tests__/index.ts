@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { save, trackForm, getQState } from '../src/index';
+import { save, trackForm } from '../src/index';
+import { parseQueryString } from '../src/utils';
 
 let testContext = {
   href: '',
@@ -68,6 +69,14 @@ describe('qState', () => {
     inputs[0].focus();
 
     expect(testContext.href).toBe('/?name=John&age=29');
+  });
+
+  it('gets state from query string', () => {
+    const qp = { key: 'name', value: 'John' };
+
+    save(qp);
+
+    expect(parseQueryString(testContext.href)).toEqual({ name: 'John' });
   });
 
   it('throws an error when passed null or undefined', () => {
