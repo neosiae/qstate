@@ -34,7 +34,7 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
 };
 
 export const getQState = (): QState | null => {
-  const search = window.location.search;
+  const search = decodeURIComponent(window.location.search);
 
   return search.length > 0 ? parseQueryString(search) : null;
 };
