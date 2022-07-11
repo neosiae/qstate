@@ -1,5 +1,5 @@
-import { QueryParametar } from './types';
-import { checkIfQPExists } from './utils';
+import { QState, QueryParametar } from './types';
+import { checkIfQPExists, parseQueryString } from './utils';
 
 export const save = (qp: QueryParametar): void => {
   if (qp == null)
@@ -31,4 +31,10 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
   form.addEventListener('blur', handler, true);
 
   return () => form.removeEventListener('blur', handler, true);
+};
+
+export const getQState = (): QState | null => {
+  const search = window.location.search;
+
+  return search.length > 0 ? parseQueryString(search) : null;
 };
