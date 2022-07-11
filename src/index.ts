@@ -1,6 +1,12 @@
 import { QueryParametar } from './types';
+import { checkIfQPExists } from './utils';
 
 export const save = (qp: QueryParametar): void => {
+  if (qp == null)
+    throw new Error(
+      'QueryParametar should not be empty. Please pass a valid object.',
+    );
+
   const params = new URLSearchParams(window.location.search);
 
   params.set(qp.key, qp.value);
@@ -11,12 +17,15 @@ export const save = (qp: QueryParametar): void => {
 };
 
 export const trackForm = (ref: HTMLElement): (() => void) => {
+  if (ref == null)
+    throw new Error('Reference is not defined. Please pass a valid reference.');
+
   const form = ref as HTMLFormElement;
 
   const handler = (event: Event): void => {
     const { name: key, value } = event.target as HTMLFormElement;
 
-    save({ key, value });
+    if (checkIfQPExists({ key, value })) save({ key, value });
   };
 
   const elements = Array.from(form.elements);
