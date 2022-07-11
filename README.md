@@ -53,4 +53,16 @@ Reference to the HTML Form
 
 > **Return value**
 
+> function
+
 Function that cleans up event handlers
+
+### getQState
+
+Get query parameters
+
+> **Return value**
+
+**object**
+
+Key and value pair
