@@ -53,7 +53,7 @@ Reference to the HTML Form
 
 > **Return value**
 
-> function
+**function**
 
 Function that cleans up event handlers
 
