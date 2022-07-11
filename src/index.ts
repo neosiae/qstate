@@ -28,10 +28,7 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
     if (checkIfQPExists({ key, value })) save({ key, value });
   };
 
-  const elements = Array.from(form.elements);
+  form.addEventListener('blur', handler, true);
 
-  elements.forEach((element) => element.addEventListener('blur', handler));
-
-  return () =>
-    elements.forEach((element) => element.removeEventListener('blur', handler));
+  return () => form.removeEventListener('blur', handler, true);
 };
