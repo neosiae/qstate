@@ -1,5 +1,6 @@
-import { QState, QueryParametar } from './types';
-import { checkIfQPExists, parseQueryString } from './utils';
+import queryString, { ParsedQuery } from 'query-string';
+import { QueryParametar } from './types';
+import { checkIfQPExists } from './utils';
 
 export const save = (qp: QueryParametar): void => {
   if (qp == null)
@@ -33,8 +34,10 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
   return () => form.removeEventListener('blur', handler, true);
 };
 
-export const getQState = (): QState | null => {
+export const getQState = (): ParsedQuery<string> | null => {
   const search = decodeURIComponent(window.location.search);
 
-  return search.length > 0 ? parseQueryString(search) : null;
+  return search.length > 0
+    ? queryString.parse(search, { arrayFormat: 'comma' })
+    : null;
 };
