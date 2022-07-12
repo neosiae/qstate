@@ -34,8 +34,8 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
   return () => form.removeEventListener('blur', handler, true);
 };
 
-export const getQState = (): ParsedQuery<string> | null => {
-  const search = decodeURIComponent(window.location.search);
+export const getQState = (location?: string): ParsedQuery<string> | null => {
+  const search = decodeURIComponent(location ?? window.location.search);
 
   return search.length > 0
     ? queryString.parse(search, { arrayFormat: 'comma' })

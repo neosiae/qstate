@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { save, trackForm } from '../src/index';
+import { save, trackForm, getQState } from '../src/index';
 
 let testContext = {
   href: '',
@@ -39,6 +39,14 @@ describe('qState', () => {
 
     expect(window.history.replaceState).toHaveBeenCalled();
     expect(testContext.href).toBe('/?name=John');
+  });
+
+  it('gets state from query string', () => {
+    const qp = { key: 'name', value: 'John' };
+
+    save(qp);
+
+    expect(getQState(testContext.href.slice(2))).toEqual({ name: 'John' });
   });
 
   it('tracks form and saves state in query string', () => {
