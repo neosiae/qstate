@@ -13,8 +13,10 @@
       <input type="text" name="qstate" />
       <input type="text" name="awesome" />
     </form>
+
+    <button>Get qState</button>
     <script type="module">
-      import { save, trackForm } from '../dist/index.js';
+      import { save, trackForm, getQState } from '../dist/bundle.js';
 
       document.querySelector('#manual').addEventListener('blur', (event) => {
         const { name: key, value } = event.target;
@@ -23,6 +25,10 @@
       });
 
       trackForm(document.querySelector('form'));
+
+      document.querySelector('button').addEventListener('click', () => {
+        console.log(getQState());
+      });
     </script>
   </body>
 </html>
