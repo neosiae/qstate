@@ -1,0 +1,81 @@
+# useQState
+
+qState hook for React.js
+
+## Usage
+
+```ts
+import React, { FunctionComponent } from 'react';
+
+import useQState from 'qstate/react';
+
+const Form: FunctionComponent = () => {
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const [qState] = useQState(formRef);
+
+  const [email, setEmail] = React.useState(() => qState?.email ?? '');
+  const [age, setAge] = React.useState(() => qState?.age ?? '');
+
+  return (
+    <form ref={formRef}>
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
+      />
+      <input
+        type="number"
+        name="age"
+        value={age}
+        onChange={(event) => {
+          setAge(event.target.value);
+        }}
+      />
+    </form>
+  );
+};
+```
+
+## API
+
+### useQState
+
+Initialize qState
+
+> **Parameters**
+
+**HTMLFormElement**
+
+> **Return value**
+
+**Tuple**
+
+`[qState, save]`
+
+## qState - read the state from query string
+
+Access state with dot or bracket notation.
+
+```ts
+const someState = qState.someState;
+```
+
+> **Return value**
+
+**null | object**
+
+## save - save state to query string
+
+Save state manually
+
+> **Parameters**
+
+**object**
+
+Key and value pair
+
+- **key** - key
+- **value** - value
