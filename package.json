@@ -2,8 +2,20 @@
   "name": "qstate",
   "version": "1.0.0",
   "description": "Save state in query string",
+  "type": "module",
   "main": "dist/bundle.js",
   "types": "dist/bundle.d.ts",
+  "typesVersions": {
+    "*": {
+      "react": [
+        "src/react/dist/bundle.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": "./dist/bundle.js",
+    "./react": "./src/react/dist/bundle.js"
+  },
   "scripts": {
     "_tsc": "tsc",
     "_clear": "rimraf dist/*",
@@ -50,5 +62,11 @@
   },
   "dependencies": {
     "query-string": "^7.1.1"
-  }
+  },
+  "files": [
+    "dist/bundle.js",
+    "dist/bundle.d.ts",
+    "src/react/dist/bundle.js",
+    "src/react/dist/bundle.d.ts"
+  ]
 }
