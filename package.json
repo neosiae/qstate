@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neosiae/qstate.git"
+    "url": "git+github.com/poviolabs/qstate.git"
   },
   "keywords": [
     "save",
@@ -34,12 +34,12 @@
     "query",
     "string"
   ],
-  "author": "Denis Kotlica <neosiae@gmail.com>",
+  "author": "Denis Kotlica <denis.kotlica@povio.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neosiae/qstate/issues"
+    "url": "https://github.com/poviolabs/qstate/issues"
   },
-  "homepage": "https://github.com/neosiae/qstate#readme",
+  "homepage": "https://github.com/poviolabs/qstate#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",

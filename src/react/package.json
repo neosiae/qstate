@@ -19,7 +19,7 @@
     "state",
     "save"
   ],
-  "author": "Denis Kotlica <neosiae@gmail.com>",
+  "author": "Denis Kotlica <denis.kotlica@povio.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": "^18.2.0",
