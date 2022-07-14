@@ -55,7 +55,9 @@ Initialize qState
 
 `[qState, save]`
 
-## qState - read the state from query string
+#### qState
+
+Read the state from query string.
 
 Access state with dot or bracket notation.
 
@@ -67,9 +69,9 @@ const someState = qState.someState;
 
 **null | object**
 
-## save - save state to query string
+#### save
 
-Save state manually
+Save state manually in query string
 
 > **Parameters**
 
