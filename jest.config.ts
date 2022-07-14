@@ -1,9 +1,6 @@
-/*
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+import type { Config } from '@jest/types';
 
-module.exports = {
+const config: Config.InitialOptions = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   transform: {
@@ -11,3 +8,5 @@ module.exports = {
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
 };
+
+export default config;
