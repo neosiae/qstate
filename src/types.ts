@@ -3,6 +3,10 @@ export type QueryParametar = {
   value: string;
 };
 
+export type Options = {
+  exclude: string[];
+};
+
 export interface QState {
   [key: string]: string;
 }

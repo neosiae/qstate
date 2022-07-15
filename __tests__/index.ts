@@ -30,6 +30,7 @@ describe('qState', () => {
 
   afterEach(() => {
     testContext = { href: '' };
+    document.getElementsByTagName('html')[0].innerHTML = '';
   });
 
   it('saves state in query string', () => {
@@ -76,6 +77,37 @@ describe('qState', () => {
     inputs[0].focus();
 
     expect(testContext.href).toBe('/?name=John&age=29');
+  });
+
+  it("doesn't track elements that are excluded", () => {
+    const form = document.createElement('form');
+    const emailInput = document.createElement('input');
+    const passwordInput = document.createElement('input');
+
+    emailInput.setAttribute('name', 'email');
+    emailInput.setAttribute('value', 'foo@bar.com');
+    passwordInput.setAttribute('name', 'password');
+    passwordInput.setAttribute('value', '123456');
+
+    form.appendChild(emailInput);
+    form.appendChild(passwordInput);
+
+    document.body.appendChild(form);
+
+    trackForm(document.querySelector('form') as HTMLElement, {
+      exclude: ['password'],
+    });
+
+    const inputs = document.querySelectorAll('input');
+
+    inputs[0].focus();
+    inputs[1].focus();
+
+    expect(decodeURIComponent(testContext.href)).toBe('/?email=foo@bar.com');
+
+    inputs[0].focus();
+
+    expect(decodeURIComponent(testContext.href)).toBe('/?email=foo@bar.com');
   });
 
   it('throws an error when passed null or undefined', () => {

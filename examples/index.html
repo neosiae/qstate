@@ -12,6 +12,7 @@
     <form>
       <input type="text" name="qstate" />
       <input type="text" name="awesome" />
+      <input type="password" name="password" />
     </form>
 
     <button>Get qState</button>
@@ -24,7 +25,7 @@
         save({ key, value });
       });
 
-      trackForm(document.querySelector('form'));
+      trackForm(document.querySelector('form'), { exclude: ['password'] });
 
       document.querySelector('button').addEventListener('click', () => {
         console.log(getQState());

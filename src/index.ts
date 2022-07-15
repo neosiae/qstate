@@ -1,6 +1,6 @@
 import queryString, { ParsedQuery } from 'query-string';
-import { QueryParametar } from './types';
-import { checkIfQPExists } from './utils';
+import { Options, QueryParametar } from './types';
+import { checkIfQPExists, isExcluded } from './utils';
 
 export const save = (qp: QueryParametar): void => {
   if (qp == null)
@@ -17,7 +17,10 @@ export const save = (qp: QueryParametar): void => {
   window.history.replaceState(null, '', url);
 };
 
-export const trackForm = (ref: HTMLElement): (() => void) => {
+export const trackForm = (
+  ref: HTMLElement,
+  options?: Options,
+): (() => void) => {
   if (ref == null)
     throw new Error('Reference is not defined. Please pass a valid reference.');
 
@@ -25,6 +28,8 @@ export const trackForm = (ref: HTMLElement): (() => void) => {
 
   const handler = (event: Event): void => {
     const { name: key, value } = event.target as HTMLFormElement;
+
+    if (isExcluded(key, options)) return;
 
     if (checkIfQPExists({ key, value })) save({ key, value });
   };
@@ -41,3 +46,5 @@ export const getQState = (location?: string): ParsedQuery<string> | null => {
     ? queryString.parse(search, { arrayFormat: 'comma' })
     : null;
 };
+
+export { Options } from './types';
