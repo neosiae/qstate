@@ -66,3 +66,7 @@ Get query parameters
 **object**
 
 Key and value pair
+
+## React
+
+[useQState hook](src/react/README.md)
