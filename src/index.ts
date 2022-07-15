@@ -1,6 +1,6 @@
 import queryString, { ParsedQuery } from 'query-string';
 import { Options, QueryParametar } from './types';
-import { checkIfQPExists, isExcluded } from './utils';
+import { isQPdefined, isExcluded } from './utils';
 
 export const save = (qp: QueryParametar): void => {
   if (qp == null)
@@ -31,7 +31,7 @@ export const trackForm = (
 
     if (isExcluded(key, options)) return;
 
-    if (checkIfQPExists({ key, value })) save({ key, value });
+    if (isQPdefined({ key, value })) save({ key, value });
   };
 
   form.addEventListener('blur', handler, true);
