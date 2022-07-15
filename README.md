@@ -59,9 +59,19 @@ Options object
 
 > **Return value**
 
-**function**
+**Array**
 
-Function that cleans up event handlers
+`[cleanup, clear]`
+
+Array of two functions
+
+#### cleanup
+
+Function that cleans up event handlers.
+
+#### clear
+
+Function that clears state in query string.
 
 ### getQState
 

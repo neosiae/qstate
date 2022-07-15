@@ -59,7 +59,7 @@ Options object
 
 **Tuple**
 
-`[qState, save]`
+`[qState, save, clear]`
 
 #### qState
 
@@ -70,6 +70,14 @@ Access state with dot or bracket notation.
 ```ts
 const someState = qState.someState;
 ```
+
+#### save
+
+Saves state manually.
+
+#### clear
+
+Function that clears state in query string.
 
 > **Return value**
 
