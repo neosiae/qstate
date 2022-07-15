@@ -15,9 +15,10 @@
       <input type="password" name="password" />
     </form>
 
-    <button>Get qState</button>
+    <button id="qState">Get qState</button>
+    <button id="reset">Clear</button>
     <script type="module">
-      import { save, trackForm, getQState } from '../dist/bundle.js';
+      import { save, trackForm, getQState, clear } from '../dist/bundle.js';
 
       document.querySelector('#manual').addEventListener('blur', (event) => {
         const { name: key, value } = event.target;
@@ -27,10 +28,13 @@
 
       trackForm(document.querySelector('form'), { exclude: ['password'] });
 
-      document.querySelector('button').addEventListener('click', () => {
+      document.querySelector('#qState').addEventListener('click', () => {
         console.log(getQState());
+      });
+
+      document.querySelector('#reset').addEventListener('click', () => {
+        console.log(clear(document.querySelector('form')));
       });
     </script>
   </body>
 </html>
-m

@@ -3,6 +3,10 @@ export type QueryParametar = {
   value: string;
 };
 
+export type clearReduce = {
+  [key: string]: string | (string | null)[] | null;
+};
+
 export type Options = {
   exclude: string[];
 };

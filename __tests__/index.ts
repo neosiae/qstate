@@ -13,8 +13,14 @@ const setupMock = () => {
     writable: true,
     value: jest.fn().mockImplementation((stateObject, unused, url) => {
       const hasQP = testContext.href.includes('?');
+      const isReadyToDelete = testContext.href.includes('delete');
 
       if (hasQP) {
+        if (isReadyToDelete) {
+          testContext.href = url.slice(0, url.indexOf('&') + 1);
+          return;
+        }
+
         testContext.href = `${testContext.href}&${url.slice(2)}`;
       } else {
         testContext.href = url;
@@ -108,6 +114,74 @@ describe('qState', () => {
     inputs[0].focus();
 
     expect(decodeURIComponent(testContext.href)).toBe('/?email=foo@bar.com');
+  });
+
+  it('clears the state in query string', () => {
+    const form = document.createElement('form');
+    const nameInput = document.createElement('input');
+    const ageInput = document.createElement('input');
+
+    nameInput.setAttribute('name', 'name');
+    nameInput.setAttribute('value', 'John');
+    ageInput.setAttribute('name', 'delete');
+    ageInput.setAttribute('value', 'true');
+
+    form.appendChild(nameInput);
+    form.appendChild(ageInput);
+
+    document.body.appendChild(form);
+
+    const [_, clear] = trackForm(document.querySelector('form') as HTMLElement);
+
+    const inputs = document.querySelectorAll('input');
+
+    inputs[0].focus();
+    inputs[1].focus();
+
+    expect(testContext.href).toBe('/?name=John');
+
+    inputs[0].focus();
+
+    expect(testContext.href).toBe('/?name=John&delete=true');
+
+    clear();
+
+    expect(testContext.href).toBe('');
+  });
+
+  it("doesn't clear state that is already in query", () => {
+    const form = document.createElement('form');
+    const nameInput = document.createElement('input');
+    const ageInput = document.createElement('input');
+
+    nameInput.setAttribute('name', 'name');
+    nameInput.setAttribute('value', 'John');
+    ageInput.setAttribute('name', 'delete');
+    ageInput.setAttribute('value', 'true');
+
+    form.appendChild(nameInput);
+    form.appendChild(ageInput);
+
+    document.body.appendChild(form);
+
+    const [_, clear] = trackForm(document.querySelector('form') as HTMLElement);
+
+    const inputs = document.querySelectorAll('input');
+
+    inputs[0].focus();
+    inputs[1].focus();
+
+    expect(testContext.href).toBe('/?name=John');
+
+    inputs[0].focus();
+
+    expect(testContext.href).toBe('/?name=John&delete=true');
+
+    save({ key: 'foo', value: 'bar' });
+
+    clear();
+
+    expect(testContext.href).toBe('/?');
   });
 
   it('throws an error when passed null or undefined', () => {

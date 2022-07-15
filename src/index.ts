@@ -1,5 +1,5 @@
 import queryString, { ParsedQuery } from 'query-string';
-import { Options, QueryParametar } from './types';
+import { clearReduce, Options, QueryParametar } from './types';
 import { isQPdefined, isExcluded } from './utils';
 
 export const save = (qp: QueryParametar): void => {
@@ -17,10 +17,37 @@ export const save = (qp: QueryParametar): void => {
   window.history.replaceState(null, '', url);
 };
 
+export const clear = (ref: HTMLElement): void => {
+  if (ref == null)
+    throw new Error('Reference is not defined. Please pass a valid reference.');
+
+  const form = ref as HTMLFormElement;
+  const names = Array.from(form.elements).map((element) =>
+    element.getAttribute('name'),
+  );
+
+  const qs = queryString.parse(document.location.search);
+
+  const clearState = (
+    accumulator: clearReduce,
+    [key, value]: [string, string | (string | null)[] | null],
+  ) => {
+    if (!names.includes(key)) accumulator[key] = value;
+
+    return accumulator;
+  };
+
+  const initialQs = Object.entries(qs).reduce<clearReduce>(clearState, {});
+
+  const url = `${window.location.pathname}?${queryString.stringify(initialQs)}`;
+
+  window.history.replaceState(null, '', url);
+};
+
 export const trackForm = (
   ref: HTMLElement,
   options?: Options,
-): (() => void) => {
+): [() => void, () => void] => {
   if (ref == null)
     throw new Error('Reference is not defined. Please pass a valid reference.');
 
@@ -36,7 +63,10 @@ export const trackForm = (
 
   form.addEventListener('blur', handler, true);
 
-  return () => form.removeEventListener('blur', handler, true);
+  return [
+    () => form.removeEventListener('blur', handler, true),
+    () => clear(form),
+  ];
 };
 
 export const getQState = (location?: string): ParsedQuery<string> | null => {

@@ -1,5 +1,5 @@
 import React, { MutableRefObject } from 'react';
-import { getQState, save, trackForm } from '../../../dist/bundle';
+import { getQState, save, trackForm, clear } from '../../../dist/bundle';
 import type { Options } from '../../../dist/bundle';
 
 const useQState = (
@@ -7,14 +7,15 @@ const useQState = (
   options?: Options,
 ) => {
   const [qState] = React.useState(() => getQState());
+  const clearState = () => clear(ref.current);
 
   React.useEffect(() => {
-    const unsubscribe = trackForm(ref.current, options);
+    const [unsubscribe] = trackForm(ref.current, options);
 
     return () => unsubscribe();
   }, [ref]);
 
-  return [qState, save] as const;
+  return [qState, save, clearState] as const;
 };
 
 export default useQState;
