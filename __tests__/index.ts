@@ -17,7 +17,7 @@ const setupMock = () => {
 
       if (hasQP) {
         if (isReadyToDelete) {
-          testContext.href = url.slice(0, url.indexOf('&') + 1);
+          testContext.href = url;
           return;
         }
 
@@ -146,7 +146,7 @@ describe('qState', () => {
 
     clear();
 
-    expect(testContext.href).toBe('');
+    expect(testContext.href).toBe('/?');
   });
 
   it("doesn't clear state that is already in query", () => {
@@ -181,7 +181,7 @@ describe('qState', () => {
 
     clear();
 
-    expect(testContext.href).toBe('/?');
+    expect(testContext.href).toBe('/?foo=bar&');
   });
 
   it('throws an error when passed null or undefined', () => {
