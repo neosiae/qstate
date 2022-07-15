@@ -53,11 +53,7 @@ Initialize qState
 
 Options object
 
-- **exclude**
-
-Array of names
-
-Add names of elements that need to be excluded
+- **exclude** Array of names. Add names of elements that need to be excluded
 
 > **Return value**
 
