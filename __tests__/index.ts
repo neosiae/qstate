@@ -164,6 +164,7 @@ describe('qState', () => {
 
     document.body.appendChild(form);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, clear] = trackForm(document.querySelector('form') as HTMLElement);
 
     const inputs = document.querySelectorAll('input');
