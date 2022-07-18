@@ -11,13 +11,19 @@ import useQState from 'qstate/react';
 
 const Form: FunctionComponent = () => {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const [{ email, age }] = useQState(formRef);
+  const [{ email, age }, _, clearState] = useQState(formRef);
 
   const [activeEmail, setActiveEmail] = React.useState(() => email ?? '');
   const [activeAge, setActiveAge] = React.useState(() => age ?? '');
 
   return (
-    <form ref={formRef}>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        clearState();
+      }}
+      ref={formRef}
+    >
       <input
         type="email"
         name="email"
@@ -34,6 +40,7 @@ const Form: FunctionComponent = () => {
           setActiveAge(event.target.value);
         }}
       />
+      <button type="submit">Submit</button>
     </form>
   );
 };
