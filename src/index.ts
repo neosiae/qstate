@@ -69,12 +69,14 @@ export const trackForm = (
   ];
 };
 
-export const getQState = (location?: string): ParsedQuery<string> | null => {
+export const getQState = (
+  location?: string,
+): ParsedQuery<string> | Record<string, never> => {
   const search = decodeURIComponent(location ?? window.location.search);
 
   return search.length > 0
     ? queryString.parse(search, { arrayFormat: 'comma' })
-    : null;
+    : {};
 };
 
 export { Options } from './types';

@@ -11,27 +11,27 @@ import useQState from 'qstate/react';
 
 const Form: FunctionComponent = () => {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const [qState] = useQState(formRef);
+  const [{ email, age }] = useQState(formRef);
 
-  const [email, setEmail] = React.useState(() => qState?.email ?? '');
-  const [age, setAge] = React.useState(() => qState?.age ?? '');
+  const [activeEmail, setActiveEmail] = React.useState(() => email ?? '');
+  const [activeAge, setActiveAge] = React.useState(() => age ?? '');
 
   return (
     <form ref={formRef}>
       <input
         type="email"
         name="email"
-        value={email}
+        value={activeEmail}
         onChange={(event) => {
-          setEmail(event.target.value);
+          setActiveEmail(event.target.value);
         }}
       />
       <input
         type="number"
         name="age"
-        value={age}
+        value={activeAge}
         onChange={(event) => {
-          setAge(event.target.value);
+          setActiveAge(event.target.value);
         }}
       />
     </form>
