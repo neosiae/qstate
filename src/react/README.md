@@ -80,18 +80,6 @@ const someState = qState.someState;
 
 #### save
 
-Saves state manually.
-
-#### clear
-
-Function that clears state in query string.
-
-> **Return value**
-
-**null | object**
-
-#### save
-
 Save state manually in query string
 
 > **Parameters**
@@ -102,3 +90,11 @@ Key and value pair
 
 - **key** - key
 - **value** - value
+
+#### clear
+
+Function that clears state in query string.
+
+> **Return value**
+
+**null | object**
