@@ -48,7 +48,7 @@ const Form: FunctionComponent = () => {
 
 ## API
 
-### useQState(HTMLFormElement, options)
+### useQState(HTMLFormElement, options?)
 
 Initialize qState
 

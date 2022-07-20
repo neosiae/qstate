@@ -41,7 +41,7 @@ Key and value pair
 - **key** - key
 - **value** - value
 
-### trackForm(HTMLElement, options)
+### trackForm(HTMLElement, options?)
 
 Track and save form state automatically
 
