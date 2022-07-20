@@ -48,15 +48,15 @@ const Form: FunctionComponent = () => {
 
 ## API
 
-### useQState
+### useQState(HTMLFormElement, options)
 
 Initialize qState
 
 > **Parameters**
 
-**HTMLFormElement**
+- **HTMLFormElement**
 
-**Options**
+- **Options**
 
 Options object
 
@@ -64,7 +64,7 @@ Options object
 
 > **Return value**
 
-**Tuple**
+**Array**
 
 `[qState, save, clear]`
 

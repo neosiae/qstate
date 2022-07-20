@@ -41,17 +41,17 @@ Key and value pair
 - **key** - key
 - **value** - value
 
-### trackForm
+### trackForm(HTMLElement, options)
 
 Track and save form state automatically
 
 > **Parameters**
 
-**HTMLElement**
+- **HTMLElement**
 
 Reference to the HTML Form
 
-**Options**
+- **Options**
 
 Options object
 
