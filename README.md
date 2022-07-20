@@ -28,13 +28,13 @@ trackForm(document.querySelector('form'));
 
 ## API
 
-### save
+### save({ key: 'foo', value: 'bar' })
 
 Save state manually
 
 > **Parameters**
 
-**object**
+- **object**
 
 Key and value pair
 

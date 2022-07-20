@@ -78,7 +78,7 @@ Access state with dot or bracket notation.
 const someState = qState.someState;
 ```
 
-#### save
+#### save({ key: 'foo', value: 'bar' })
 
 Save state manually in query string
 
