@@ -78,6 +78,10 @@ Access state with dot or bracket notation.
 const someState = qState.someState;
 ```
 
+> **Return value**
+
+**object**
+
 #### save({ key: 'foo', value: 'bar' })
 
 Save state manually in query string
@@ -94,7 +98,3 @@ Key and value pair
 #### clear
 
 Function that clears state in query string.
-
-> **Return value**
-
-**null | object**
