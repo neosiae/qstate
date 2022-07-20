@@ -47,9 +47,7 @@ Track and save form state automatically
 
 > **Parameters**
 
-- **HTMLElement**
-
-Reference to the HTML Form
+- **HTMLElement** - Reference to the HTML Form
 
 - **Options** - Options object
 
@@ -63,11 +61,11 @@ Reference to the HTML Form
 
 Array of two functions
 
-#### cleanup
+### cleanup
 
 Function that cleans up event handlers.
 
-#### clear
+### clear
 
 Function that clears state in query string.
 

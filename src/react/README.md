@@ -66,7 +66,7 @@ Initialize qState
 
 `[qState, save, clear]`
 
-#### qState
+### qState
 
 Read the state from query string.
 
@@ -80,7 +80,7 @@ const someState = qState.someState;
 
 **object**
 
-#### save({ key: 'foo', value: 'bar' })
+### save({ key: 'foo', value: 'bar' })
 
 Save state manually in query string
 
@@ -93,6 +93,6 @@ Key and value pair
 - **key** - key
 - **value** - value
 
-#### clear
+### clear
 
 Function that clears state in query string.
