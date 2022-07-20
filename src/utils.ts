@@ -7,3 +7,9 @@ export const isExcluded = (
   name: string,
   options: Options | undefined,
 ): boolean | undefined => options?.exclude?.includes(name);
+
+export const updateQueryString = (qs: string): void => {
+  const url = `${window.location.pathname}?${qs}`;
+
+  window.history.replaceState(null, '', url);
+};

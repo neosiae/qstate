@@ -1,6 +1,6 @@
 import queryString, { ParsedQuery } from 'query-string';
 import { clearReduce, Options, QueryParametar } from './types';
-import { isQPdefined, isExcluded } from './utils';
+import { isQPdefined, isExcluded, updateQueryString } from './utils';
 
 export const save = (qp: QueryParametar): void => {
   if (qp == null)
@@ -12,9 +12,7 @@ export const save = (qp: QueryParametar): void => {
 
   params.set(qp.key, qp.value);
 
-  const url = `${window.location.pathname}?${params.toString()}`;
-
-  window.history.replaceState(null, '', url);
+  updateQueryString(params.toString());
 };
 
 export const clear = (ref: HTMLElement): void => {
@@ -38,10 +36,9 @@ export const clear = (ref: HTMLElement): void => {
   };
 
   const initialQs = Object.entries(qs).reduce<clearReduce>(clearState, {});
+  ``;
 
-  const url = `${window.location.pathname}?${queryString.stringify(initialQs)}`;
-
-  window.history.replaceState(null, '', url);
+  updateQueryString(queryString.stringify(initialQs));
 };
 
 export const trackForm = (
