@@ -36,7 +36,6 @@ export const clear = (ref: HTMLElement): void => {
   };
 
   const initialQs = Object.entries(qs).reduce<clearReduce>(clearState, {});
-  ``;
 
   updateQueryString(queryString.stringify(initialQs));
 };
