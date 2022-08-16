@@ -1,5 +1,5 @@
 {
-  "name": "qstate",
+  "name": "@povio/qstate",
   "version": "1.0.0",
   "description": "Save state in query string",
   "type": "module",
