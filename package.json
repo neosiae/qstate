@@ -1,6 +1,6 @@
 {
   "name": "@povio/qstate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Save state in query string",
   "type": "module",
   "main": "dist/bundle.js",
